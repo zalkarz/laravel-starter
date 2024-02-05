@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ Namespace }};
+
+use App\Models\{{ Path }}{{ Model }};
+
+class DestroyAction
+{
+    public function __invoke({{ Model }} ${{ model }}): void
+    {
+        ${{ model }}->delete();
+    }
+}

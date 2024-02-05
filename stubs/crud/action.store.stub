@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ Namespace }};
+
+use App\Models\{{ Path }}{{ Model }};
+
+class StoreAction
+{
+    public function __invoke(array $inputs): void
+    {
+        {{ Model }}::create($inputs);
+    }
+}

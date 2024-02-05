@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ Namespace }};
+
+use App\Models\{{ Path }}{{ Model }};
+
+class UpdateAction
+{
+    public function __invoke({{ Model }} ${{ model }}, array $inputs): void
+    {
+        ${{ model }}->update($inputs);
+    }
+}

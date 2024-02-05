@@ -1,0 +1,16 @@
+<p><a href="/{{ modelPlural }}/create">Create {{ model }}</a></p>
+
+<h1>{{ ModelPlural }}</h1>
+
+@if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif
+
+@forelse (${{ modelPlural }} as ${{ model }})
+    <h2><a href="{{ route('{{ modelPlural }}.show', ${{ model }}->id) }}">{{ ${{ model }}->title }}</a></h2>
+    <p>{{ ${{ model }}->body }}</p>
+@empty
+    <p>There are no {{ modelPlural }} yet</p>
+@endforelse

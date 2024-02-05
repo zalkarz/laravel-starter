@@ -1,0 +1,70 @@
+<?php
+
+namespace {{ Namespace }};
+{{ ParentControllerNamespace }}
+use App\Http\Requests\{{ Path }}{{ ModelPlural }}\StoreRequest;
+use App\Http\Requests\{{ Path }}{{ ModelPlural }}\UpdateRequest;
+use App\Models\{{ Path }}{{ Model }};
+use App\UseCases\{{ Path }}{{ ModelPlural }}\DestroyAction;
+use App\UseCases\{{ Path }}{{ ModelPlural }}\IndexAction;
+use App\UseCases\{{ Path }}{{ ModelPlural }}\StoreAction;
+use App\UseCases\{{ Path }}{{ ModelPlural }}\UpdateAction;
+
+class {{ Model }}Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(IndexAction $action)
+    {
+        return view('{{ viewPath }}{{ modelPlural }}.index', $action());
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('{{ viewPath }}{{ modelPlural }}.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(StoreRequest $request, StoreAction $action)
+    {
+        return redirect()->route('{{ modelPlural }}.index', $action($request->validated()))->with('success', '{{ Model }} has been successfully created');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show({{ Model }} ${{ model }})
+    {
+        return view('{{ viewPath }}{{ modelPlural }}.show', compact('{{ model }}'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit({{ Model }} ${{ model }})
+    {
+        return view('{{ viewPath }}{{ modelPlural }}.edit', compact('{{ model }}'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update({{ Model }} ${{ model }}, UpdateRequest $request, UpdateAction $action)
+    {
+        return redirect()->route('{{ modelPlural }}.index', $action(${{ model }}, $request->validated()))->with('success', '{{ Model }} has been successfully updated');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy({{ Model }} ${{ model }}, DestroyAction $action)
+    {
+        return redirect()->route('{{ modelPlural }}.index', $action(${{ model }}))->with('success', '{{ Model }} has been successfully deleted');
+    }
+}

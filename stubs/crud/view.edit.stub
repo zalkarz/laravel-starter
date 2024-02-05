@@ -1,0 +1,25 @@
+<p><a href="/{{ modelPlural }}">{{ ModelPlural }}</a></p>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<form action="{{ route('{{ modelPlural }}.update', ${{ model }}->id) }}" method="post">
+    @csrf
+    @method('put')
+    <input type="text" name="title" value="{{ ${{ model }}->title }}" placeholder="title" required>
+    <input type="text" name="body" value="{{ ${{ model }}->body }}" placeholder="body">
+    <input type="submit" value="Update">
+</form>
+
+<form action="{{ route('{{ modelPlural }}.destroy', ${{ model }}->id) }}" method="post">
+    @csrf
+    @method('delete')
+    <input type="submit" value="Delete">
+</form>

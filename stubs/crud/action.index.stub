@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ Namespace }};
+
+use App\Models\{{ Path }}{{ Model }};
+
+class IndexAction
+{
+    public function __invoke()
+    {
+        ${{ modelPlural }} = {{ Model }}::latest()->paginate(30);
+
+        return compact('{{ modelPlural }}');
+    }
+}

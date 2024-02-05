@@ -1,0 +1,6 @@
+<p><a href="/{{ modelPlural }}">{{ ModelPlural }}</a></p>
+
+<h2>{{ ${{ model }}->title }}</h2>
+<p>{{ ${{ model }}->body }}</p>
+
+<p><a href="{{ route('{{ modelPlural }}.edit', ${{ model }}->id) }}">Edit</a></p>
